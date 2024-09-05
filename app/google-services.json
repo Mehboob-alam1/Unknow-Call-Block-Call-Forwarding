@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1070622566812",
+    "project_id": "callblock-a565b",
+    "storage_bucket": "callblock-a565b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070622566812:android:e4726a01f0ba0c3331c059",
+        "android_client_info": {
+          "package_name": "com.example.callblock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBthlQlhVYmIVGoKHS3eTU6lkFjF05VoDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
