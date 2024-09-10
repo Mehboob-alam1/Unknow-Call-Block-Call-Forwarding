@@ -136,6 +136,7 @@ public class CallReceiver extends BroadcastReceiver {
 
             notificationChannel.enableVibration(false);
             notificationChannel.enableLights(false);
+            
 
             if (notificationManager != null) {
                 notificationManager.createNotificationChannel(notificationChannel);

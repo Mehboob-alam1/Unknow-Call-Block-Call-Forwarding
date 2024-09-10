@@ -62,8 +62,10 @@ mAuth=FirebaseAuth.getInstance();
                 progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
+
         });
     }
+
 
     private void sendVerificationCodeToUser(String phoneNo) {
 
@@ -106,10 +108,12 @@ mAuth=FirebaseAuth.getInstance();
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
+
             Toast.makeText(VerifyPhoneActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
         }
     };
+
 
     private void verifyCode(String codeByUser) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCodeBySystem, codeByUser);
@@ -127,7 +131,9 @@ mAuth=FirebaseAuth.getInstance();
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
+
                         }else {
+
                             Toast.makeText(VerifyPhoneActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }

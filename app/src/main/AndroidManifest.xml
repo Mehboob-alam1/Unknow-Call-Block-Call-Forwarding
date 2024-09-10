@@ -33,14 +33,18 @@
         android:theme="@style/Theme.CallBlock"
         tools:targetApi="31">
         <activity
+            android:name=".CallLogsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".VerifyPhoneActivity"
             android:exported="false" />
         <activity
             android:name=".OTPActivity"
             android:exported="true"
-            android:theme="@style/Theme.CallBlock" >
-
-
+            android:theme="@style/Theme.CallBlock">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,9 +53,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
 
         <receiver
             android:name=".CallReceiver"

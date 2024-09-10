@@ -27,7 +27,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         submit = findViewById(R.id.btnSignIn);
 
         // Set +91 as the prefix
-        mob_no.setText("+91 ");
+        mob_no.setText("+91");
 
         // Move the cursor after the +91 prefix
         mob_no.setSelection(mob_no.getText().length());
@@ -43,8 +43,8 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 // Ensure +91 is always there and can't be deleted
-                if (!charSequence.toString().startsWith("+91 ")) {
-                    mob_no.setText("+91 ");
+                if (!charSequence.toString().startsWith("+91")) {
+                    mob_no.setText("+91");
                     mob_no.setSelection(mob_no.getText().length());
                 }
             }
@@ -106,6 +106,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
         if (phoneNumber.length()==10)
             return true;
+
         else
             return false;
     }

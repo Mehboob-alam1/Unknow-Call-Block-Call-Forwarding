@@ -23,6 +23,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
     private Switch switchCallForward;
     private TextView textCallForward;
     private EditText editPhoneNumber;
+    ImageView btnCallLogs,btnSettings;
     private SharedPreferences sharedPreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
         switchCallForward = findViewById(R.id.switchCallForward);
         textCallForward = findViewById(R.id.textCallForward);
         editPhoneNumber = new EditText(this);
-
+        btnCallLogs=findViewById(R.id.btnCallLogs);
+        btnSettings=findViewById(R.id.btnSettings);
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -90,6 +94,15 @@ public class MainActivity extends AppCompatActivity {
 
 
             saveSimNumber();
+
+        btnSettings.setOnClickListener(v -> {
+
+
+            startActivity(new Intent(MainActivity.this,SettingsActivity.class));
+        });
+        btnCallLogs.setOnClickListener(v -> {
+
+        });
 
         if (!getSimNumberFromSharedPreferences().equals("Unknown")) {
 
@@ -122,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 callforward("#21#");
             }
         });
+
 
         // Handle text click to set forwarding number
         textCallForward.setOnClickListener(v -> {

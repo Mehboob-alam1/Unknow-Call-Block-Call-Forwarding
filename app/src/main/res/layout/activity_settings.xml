@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity" >
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_margin="16dp"/>
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Greetings"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="16dp"/>
+    <EditText
+        android:id="@+id/etGreetings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@null"
+        android:ellipsize="end"
+        android:ems="10"
+        android:padding="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mid Prompt"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="16dp"/>
+    <EditText
+        android:id="@+id/etMidPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@null"
+        android:ellipsize="end"
+        android:ems="10"
+        android:padding="16dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prompt"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="16dp"/>
+    <EditText
+        android:id="@+id/etPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="5dp"
+        android:background="@null"
+        android:inputType="textMultiLine"
+        android:ellipsize="end"
+        android:ems="10"
+        android:padding="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forwarding Number"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="16dp"/>
+    <EditText
+        android:id="@+id/etForwardingNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:background="@null"
+        android:inputType="textMultiLine"
+        android:ellipsize="end"
+        android:ems="10"
+        android:padding="16dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_margin="16dp"
+        android:id="@+id/btnUpdate"/>
+</LinearLayout>
+
+</ScrollView>
