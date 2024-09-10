@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     private Switch switchCallForward;
     private TextView textCallForward;
     private EditText editPhoneNumber;
-    ImageView btnCallLogs,btnSettings;
+    ImageView btnCallLogs, btnSettings;
     private SharedPreferences sharedPreferences;
 
 
@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         switchCallForward = findViewById(R.id.switchCallForward);
         textCallForward = findViewById(R.id.textCallForward);
         editPhoneNumber = new EditText(this);
-        btnCallLogs=findViewById(R.id.btnCallLogs);
-        btnSettings=findViewById(R.id.btnSettings);
+        btnCallLogs = findViewById(R.id.btnCallLogs);
+        btnSettings = findViewById(R.id.btnSettings);
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS)
                 != PackageManager.PERMISSION_GRANTED) {
 
@@ -87,31 +87,29 @@ public class MainActivity extends AppCompatActivity {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.ANSWER_PHONE_CALLS) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_CALL_LOG, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CONTACTS,Manifest.permission.WRITE_CONTACTS,Manifest.permission.WRITE_CALL_LOG, Manifest.permission.ANSWER_PHONE_CALLS},
+                    new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_CALL_LOG, Manifest.permission.CALL_PHONE, Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_CONTACTS, Manifest.permission.WRITE_CALL_LOG, Manifest.permission.ANSWER_PHONE_CALLS},
                     REQUEST_CODE_PERMISSIONS);
         }
 
 
-
-            saveSimNumber();
+        saveSimNumber();
 
         btnSettings.setOnClickListener(v -> {
 
 
-            startActivity(new Intent(MainActivity.this,SettingsActivity.class));
+            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
         });
-        btnCallLogs.setOnClickListener(v -> {
 
+
+        btnCallLogs.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, CallLogsActivity.class));
         });
 
         if (!getSimNumberFromSharedPreferences().equals("Unknown")) {
 
             new LoadContactsTask().execute();
         }
-
         registerLocalBroadcastReceiver();
-
-
 
 
         // Load saved number and set the switch to off initially
@@ -173,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             } else {
             }
-        }else if (requestCode==REQUEST_CONTACTS_PERMISSIONS) {
+        } else if (requestCode == REQUEST_CONTACTS_PERMISSIONS) {
             // If the request is cancelled, the result arrays are empty.
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission was granted, proceed with your operation.
@@ -183,11 +181,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
     }
+
     private void registerLocalBroadcastReceiver() {
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getApplicationContext());
         localBroadcastManager.registerReceiver(receiver, new IntentFilter(ACTION_USER_DELETED_ENTRY));
     }
-
 
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
@@ -263,17 +261,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public  String getAndroidID() {
+    public String getAndroidID() {
         return Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
     }
+
     private void saveSimNumber() {
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
             @SuppressLint("HardwareIds")
             String simNumber = telephonyManager.getLine1Number();
 
-            Log.d("PHONE",simNumber);
-            Toast.makeText(this, "SIM NUMBER" +simNumber, Toast.LENGTH_LONG).show();
+            Log.d("PHONE", simNumber);
+            Toast.makeText(this, "SIM NUMBER" + simNumber, Toast.LENGTH_LONG).show();
             //String simNumber = telephonyManager.gegettSimSerialNumber(); // Get the SIM number
             if (simNumber != null) {
                 SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -285,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     private void callforward(String callForwardString) {
         PhoneCallListener phoneListener = new PhoneCallListener();
         TelephonyManager telephonyManager = (TelephonyManager)
@@ -296,6 +296,7 @@ public class MainActivity extends AppCompatActivity {
         intentCallForward.setData(mmiCode);
         startActivity(intentCallForward);
     }
+
     private String getSimNumberFromSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         String simNumber = sharedPreferences.getString("SIM_NUMBER", null);
